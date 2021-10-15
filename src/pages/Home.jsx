@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Card, Row, Image } from "react-bootstrap";
+import { Button, Col, Card, Row, Image, Badge } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import electricalServiceBadge from "../assests/images/electricalServiceBadge.svg";
 import highVoltage from "../assests/images/highVoltage.svg";
@@ -7,7 +7,6 @@ import electricalServicesPink from "../assests/images/electricalServicesPink.svg
 import coins from "../assests/images/coins.svg";
 import gift from "../assests/images/gift.svg";
 import bestseller from "../assests/images/best-seller.svg";
-import stripes from "../assests/images/stripes.svg";
 import Badges from "../components/Badges";
 import MovementCard from "../components/MovementCard";
 import Topbar from "../components/Topbar";
@@ -16,6 +15,7 @@ import {
   buildStyles,
 } from "react-circular-progressbar";
 import styled from "styled-components";
+import { useState } from "react";
 
 const LatestAchiveMentData = [
   {
@@ -80,7 +80,10 @@ const goalCard = [
   },
 ];
 
+const optFilter = [{ title: "Latest Achivements" }, { title: "Badges" }];
+
 const Home = () => {
+  const [activeOptFilter, setActiveOptFilter] = useState(0);
   return (
     <div>
       <Sidebar />
@@ -134,41 +137,28 @@ const Home = () => {
                 </div>
               </Col>
               <Row>
-                <Col
-                  md={6}
-                  lg={6}
-                  style={{
-                    background: "white",
-                    borderRadius: "20px",
-                    border: "1px solid #24272C",
-                  }}
-                >
-                  <Button
-                    style={{
-                      background: "white",
-                      border: "#FAD6A5",
-                      color: "#484848",
-                    }}
-                  >
-                    Latest Achivements
-                  </Button>
-                </Col>
-
-                <Col
-                  md={6}
-                  lg={6}
-                  style={{ background: "#FAD6A5", borderRadius: "20px" }}
-                >
-                  <Button
-                    style={{
-                      background: "#FAD6A5",
-                      border: "none",
-                      color: "#484848",
-                    }}
-                  >
-                    Badges
-                  </Button>
-                </Col>
+                {optFilter.map((data, index) => (
+                  <Col md={12} lg={6}>
+                    <Badge
+                      key={index}
+                      onClick={() => setActiveOptFilter(index)}
+                      pill
+                      className={
+                        index === activeOptFilter
+                          ? "badgeActive badge"
+                          : "badge"
+                      }
+                      style={{
+                        background:
+                          index === activeOptFilter
+                            ? "#fad6a5 !important"
+                            : "white !important",
+                      }}
+                    >
+                      {data.title}
+                    </Badge>
+                  </Col>
+                ))}
               </Row>
 
               {LatestAchiveMentData.map((data, index) => (
@@ -329,14 +319,23 @@ const Home = () => {
             </h4>
 
             <Row className="mt-3">
-              <Col xs={4}>
-                <Image src={require("../assests/images/Beans1.svg").default} />
+              <Col md={12} lg={4}>
+                <Image
+                  src={require("../assests/images/Beans1.svg").default}
+                  style={{ margin: 2 }}
+                />
               </Col>
-              <Col xs={4}>
-                <Image src={require("../assests/images/Beans2.svg").default} />
+              <Col md={12} lg={4}>
+                <Image
+                  src={require("../assests/images/Beans2.svg").default}
+                  style={{ margin: 2 }}
+                />
               </Col>
-              <Col xs={4}>
-                <Image src={require("../assests/images/Beans3.svg").default} />
+              <Col md={12} lg={4}>
+                <Image
+                  src={require("../assests/images/Beans3.svg").default}
+                  style={{ margin: 2 }}
+                />
               </Col>
             </Row>
           </Col>

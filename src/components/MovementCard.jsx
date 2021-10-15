@@ -4,10 +4,10 @@ import { Card, Col, Image } from "react-bootstrap";
 const MovementCard = (props) => {
   return (
     <>
-      <Col xs={12} className="pe-0 ps-0" key={props.index}>
+      <Col xs={12} lg={6} className="pe-0 ps-0" key={props.index}>
         <Card
           style={{
-            width: "10vw",
+            width: "98%",
             background: `${props.data.bg}`,
             marginTop: "50px",
             marginRight: "0px",
