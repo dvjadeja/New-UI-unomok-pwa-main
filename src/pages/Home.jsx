@@ -4,12 +4,16 @@ import Sidebar from "../components/Sidebar";
 import electricalServiceBadge from "../assests/images/electricalServiceBadge.svg";
 import highVoltage from "../assests/images/highVoltage.svg";
 import electricalServicesPink from "../assests/images/electricalServicesPink.svg";
+import speedometer from "../assests/images/speedometer.svg";
+import mission from "../assests/images/mission.svg";
+import badge from "../assests/images/badge.svg";
 import coins from "../assests/images/coins.svg";
 import gift from "../assests/images/gift.svg";
 import bestseller from "../assests/images/best-seller.svg";
-import Badges from "../components/Badges";
+import Achivement from "../components/Achivement";
 import MovementCard from "../components/MovementCard";
 import Topbar from "../components/Topbar";
+import Badge from "../components/Badge";
 import {
   CircularProgressbarWithChildren,
   buildStyles,
@@ -32,6 +36,30 @@ const LatestAchiveMentData = [
     name: "Electrical Services",
     img: electricalServicesPink,
     bg: "linear-gradient(90deg, rgba(239,27,126,1) 0%, rgba(124,4,60,1) 100%)",
+  },
+];
+
+const badgeData = [
+  {
+    name: "Score",
+    points: 1500,
+    desc: "Incentive Achivement",
+    img: speedometer,
+    bg: "#E0F0F8",
+  },
+  {
+    name: "Milestone",
+    points: 1,
+    desc: "Incentive Achivement",
+    img: mission,
+    bg: "#FBC0C9",
+  },
+  {
+    name: "Badge",
+    points: 1,
+    desc: "Incentive Achivement",
+    img: badge,
+    bg: "#AAABF5",
   },
 ];
 
@@ -188,9 +216,13 @@ const Home = () => {
                 </div>
               </Col>
 
-              {LatestAchiveMentData.map((data, index) => (
-                <Badges data={data} index={index} />
-              ))}
+              {activeOptFilter === 0
+                ? LatestAchiveMentData.map((data, index) => (
+                    <Achivement data={data} index={index} />
+                  ))
+                : badgeData.map((data, index) => (
+                    <Badge data={data} index={index} />
+                  ))}
 
               <h4 className="text-start mt-4 p-0">Movements</h4>
               {movementCardData.map((data, index) => (

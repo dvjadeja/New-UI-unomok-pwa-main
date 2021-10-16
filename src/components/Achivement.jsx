@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Col, Image, Row } from "react-bootstrap";
 
-const Badges = (props) => {
+const Achivement = (props) => {
   return (
     <>
       <Col xs={12} className="mt-3 pe-0 ps-0" key={props.index}>
@@ -36,4 +36,4 @@ const Badges = (props) => {
   );
 };
 
-export default Badges;
+export default Achivement;
