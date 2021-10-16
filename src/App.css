@@ -113,8 +113,8 @@ ul {
 }
 
 .badge {
-  padding: 12px 25px !important;
+  padding: 10px;
   color: #484848 !important;
   border: 1px solid grey;
-  margin: 0 10px;
+  cursor: pointer;
 }

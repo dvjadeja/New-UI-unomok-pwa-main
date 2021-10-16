@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Card, Row, Image, Badge } from "react-bootstrap";
+import { Col, Card, Row, Image } from "react-bootstrap";
 import Sidebar from "../components/Sidebar";
 import electricalServiceBadge from "../assests/images/electricalServiceBadge.svg";
 import highVoltage from "../assests/images/highVoltage.svg";
@@ -80,10 +80,9 @@ const goalCard = [
   },
 ];
 
-const optFilter = [{ title: "Latest Achivements" }, { title: "Badges" }];
-
 const Home = () => {
   const [activeOptFilter, setActiveOptFilter] = useState(0);
+  const [activeOptFilter2, setActiveOptFilter2] = useState(0);
   return (
     <div>
       <Sidebar />
@@ -92,6 +91,7 @@ const Home = () => {
           <Col
             md={5}
             lg={5}
+            sm={5}
             l
             style={{
               border: "1px solid #707070",
@@ -136,30 +136,57 @@ const Home = () => {
                   </p>
                 </div>
               </Col>
-              <Row>
-                {optFilter.map((data, index) => (
-                  <Col md={12} lg={6}>
-                    <Badge
-                      key={index}
-                      onClick={() => setActiveOptFilter(index)}
-                      pill
-                      className={
-                        index === activeOptFilter
-                          ? "badgeActive badge"
-                          : "badge"
-                      }
-                      style={{
-                        background:
-                          index === activeOptFilter
-                            ? "#fad6a5 !important"
-                            : "white !important",
-                      }}
-                    >
-                      {data.title}
-                    </Badge>
-                  </Col>
-                ))}
-              </Row>
+
+              <Col
+                md={8}
+                lg={8}
+                sm={8}
+                className="p-0 mt-1"
+                style={{ textAlign: "left" }}
+              >
+                <div
+                  onClick={() => setActiveOptFilter(0)}
+                  className={
+                    0 === activeOptFilter ? "badgeActive badge" : "badge"
+                  }
+                  style={{
+                    background:
+                      0 === activeOptFilter
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    borderRadius: "20px",
+                    padding: 10,
+                  }}
+                >
+                  <span>Latest Achivements</span>
+                </div>
+              </Col>
+
+              <Col
+                md={3}
+                lg={3}
+                sm={{ span: 3, offset: 1 }}
+                className="mt-1"
+                style={{ textAlign: "center" }}
+              >
+                <div
+                  onClick={() => setActiveOptFilter(1)}
+                  className={
+                    1 === activeOptFilter ? "badgeActive badge" : "badge"
+                  }
+                  style={{
+                    borderRadius: "20px",
+                    background:
+                      1 === activeOptFilter
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    padding: 10,
+                    marginRight: 5,
+                  }}
+                >
+                  <span>Badges</span>
+                </div>
+              </Col>
 
               {LatestAchiveMentData.map((data, index) => (
                 <Badges data={data} index={index} />
@@ -171,91 +198,99 @@ const Home = () => {
               ))}
             </Row>
           </Col>
-          <Col md={6} lg={6} className="ms-2 me-0 pe-0">
+          <Col md={6} lg={6} sm={6} className="ms-2 me-0 pe-0">
             <Topbar />
             <h4 className="text-start mt-4 p-0 mb-1">
               <span style={{ borderBottom: "2px solid #fad6a5" }}>Oppor</span>
               tunities
             </h4>
             <Row className="mt-4" style={{ fontSize: "13px" }}>
-              <Col
-                style={{
-                  background: "#FAD6A5",
-                  borderRadius: "20px",
-                  margin: "2px",
-                }}
-              >
-                <Button
+              <Col sm={12} lg={3} md={6} className="mb-1">
+                <div
+                  onClick={() => setActiveOptFilter2(0)}
+                  className={
+                    0 === activeOptFilter2 ? "badgeActive badge" : "badge"
+                  }
                   style={{
-                    background: "#FAD6A5",
-                    border: "none",
-                    color: "#484848",
+                    background:
+                      0 === activeOptFilter2
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    borderRadius: "20px",
+                    padding: 10,
+                    fontSize: 14,
                   }}
                 >
-                  Ending Soon
-                </Button>
+                  <span>Ending Soon</span>
+                </div>
               </Col>
 
-              <Col
-                style={{
-                  background: "white",
-                  borderRadius: "20px",
-                  border: "1px solid #24272C",
-                  margin: "2px",
-                }}
-              >
-                <Button
+              <Col sm={12} lg={3} md={6} className="mb-1">
+                <div
+                  onClick={() => setActiveOptFilter2(1)}
+                  className={
+                    1 === activeOptFilter2 ? "badgeActive badge" : "badge"
+                  }
                   style={{
-                    background: "white",
-                    border: "#FAD6A5",
-                    color: "#484848",
+                    background:
+                      1 === activeOptFilter2
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    borderRadius: "20px",
+                    border: "1px solid #24272C",
+                    padding: 10,
+                    fontSize: 14,
                   }}
                 >
-                  In Progress
-                </Button>
+                  <span>In Progress</span>
+                </div>
               </Col>
 
-              <Col
-                style={{
-                  background: "white",
-                  borderRadius: "20px",
-                  border: "1px solid #24272C",
-                  margin: "2px",
-                }}
-              >
-                <Button
+              <Col sm={12} lg={3} md={6} className="mb-1">
+                <div
+                  onClick={() => setActiveOptFilter2(2)}
+                  className={
+                    2 === activeOptFilter2 ? "badgeActive badge" : "badge"
+                  }
                   style={{
-                    background: "white",
-                    border: "#FAD6A5",
-                    color: "#484848",
+                    background:
+                      0 === activeOptFilter2
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    borderRadius: "20px",
+                    border: "1px solid #24272C",
+                    padding: 10,
+                    fontSize: 14,
                   }}
                 >
-                  Upcoming
-                </Button>
+                  <span>Upcoming</span>
+                </div>
               </Col>
-              <Col
-                style={{
-                  background: "white",
-                  borderRadius: "20px",
-                  border: "1px solid #24272C",
-                  margin: "2px",
-                }}
-              >
-                <Button
+              <Col sm={12} lg={3} md={6} className="mb-1">
+                <div
+                  onClick={() => setActiveOptFilter2(3)}
+                  className={
+                    3 === activeOptFilter2 ? "badgeActive badge" : "badge"
+                  }
                   style={{
-                    background: "white",
-                    border: "#FAD6A5",
-                    color: "#484848",
+                    background:
+                      0 === activeOptFilter2
+                        ? "#fad6a5 !important"
+                        : "white !important",
+                    borderRadius: "20px",
+                    border: "1px solid #24272C",
+                    padding: 10,
+                    fontSize: 14,
                   }}
                 >
-                  No Progress
-                </Button>
+                  <span>No Progress</span>
+                </div>
               </Col>
             </Row>
 
             <Row style={{ marginTop: 10 }}>
               {goalCard.map((data, index) => (
-                <Col key={index} xs={1} lg={3} md={6}>
+                <Col key={index} lg={6} md={6} sm={6} xs={12}>
                   <StyledBorderLessCard>
                     <Card.Text
                       style={{
@@ -319,22 +354,25 @@ const Home = () => {
             </h4>
 
             <Row className="mt-3">
-              <Col md={12} lg={4}>
+              <Col md={4} lg={4} sm={12}>
                 <Image
                   src={require("../assests/images/Beans1.svg").default}
-                  style={{ margin: 2 }}
+                  style={{
+                    backgroundSize: "cover",
+                    width: "100%",
+                  }}
                 />
               </Col>
-              <Col md={12} lg={4}>
+              <Col md={4} lg={4} sm={12}>
                 <Image
                   src={require("../assests/images/Beans2.svg").default}
-                  style={{ margin: 2 }}
+                  style={{ backgroundSize: "cover", width: "100%" }}
                 />
               </Col>
-              <Col md={12} lg={4}>
+              <Col md={4} lg={4} sm={12}>
                 <Image
                   src={require("../assests/images/Beans3.svg").default}
-                  style={{ margin: 2 }}
+                  style={{ backgroundSize: "cover", width: "100%" }}
                 />
               </Col>
             </Row>
