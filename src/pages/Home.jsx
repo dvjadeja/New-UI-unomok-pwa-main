@@ -416,7 +416,7 @@ const Home = () => {
 };
 
 const StyledBorderLessCard = styled(Card)`
-  height: 200px;
+  height: 250px;
   margin-bottom: 20px;
   /* margin-top: 10px; */
   box-shadow: 0px 8px 30px #0000001a;
